@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+.header__nav{
+  background-color: #282c34;
+  width: 100%;
+  padding: 3px;
+  border: 3px solid #61d9fb;
+}
+
+.header__ul{
+  list-style: none;
+  display: flex;
+  padding: 0;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__li{
+  text-decoration: none;
+  margin: 10px;
+}
+
+.header__a{
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
+.header__a:hover{
+  color: #61d9fb;
+}
