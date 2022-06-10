@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import "./NavBar.css";
 import CartWidget from '../cartWidget/CartWidget';
+import ItemCount from '../itemCount/ItemCount';
 
 const Navigation = () => {
   return (    
@@ -13,7 +14,7 @@ const Navigation = () => {
         <li className="header__li"><a className="header__a" href="#">Productos</a></li>
         <li className="header__li"><a className="header__a" href="#">Nosotros</a></li>
         <li className="header__li"><a className="header__a" href="#">Contactanos</a></li>
-        <li className="header__li"><a className="header__a" href="#"><CartWidget/></a></li>
+        <li className="header__li"><a className="header__a" href="#"><CartWidget/></a> <ItemCount/></li>
       </ul>
     </nav>
   );

@@ -10,19 +10,7 @@ function App(promps) {
         <Navigation/> 
         <ItemListContainer item1='item_1' item2='item_2' item3='item_3' item4='item_4'/>       
         <h1> Propio Mercado Ecommerce </h1>
-        <h3> comming soon</h3>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h3> comming soon</h3>       
       </header>
     </div>
   );
