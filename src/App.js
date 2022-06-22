@@ -1,7 +1,8 @@
 
 import './App.css';
 import Navigation from "./components/navBar/NavBar";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
+import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer"
+import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
 
 function App(promps) {
   return (
