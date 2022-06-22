@@ -1,15 +1,32 @@
+import { useEffect, useState } from "react";
 import "./ItemListContainer.css";
+//import ItemCount from '../itemCount/ItemCount';
+import { getProducts, listProducts } from "../../data/asyncMock"
+import ItemList from "../ItemList/ItemList"
 
 const ItemListContainer = ({item1,item2,item3,item4}) => {
+  
+  // const agregarAlCarrito= (cantidad) => {
+
+  //   console.log(`se agrego: ${cantidad} al carrito`)
+    
+  //   }
+//<ItemCount stock={10} initial={1} onAdd={agregarAlCarrito}/>
+    const [items, setItems] = useState([])
+    const categoria = "remeras"
+    useEffect(() => {
+        getProducts(categoria)
+            .then(res => setItems(res))
+            .catch(err => console.log(err))
+    }, [])
+    
   return (    
-    <div>   
-      <ul className="">
-        <li className="header__li"><a className="header__a" href="#">{item1}</a></li>
-        <li className="header__li"><a className="header__a" href="#">{item2}</a></li>
-        <li className="header__li"><a className="header__a" href="#">{item3}</a></li>
-        <li className="header__li"><a className="header__a" href="#">{item3}</a></li>
-      </ul>
-    </div>
+    <>   
+        
+      {items.length > 0 ? <ItemList product={items} /> : <div>Cargando...</div>
+            }
+  
+    </>
   );
 };
 

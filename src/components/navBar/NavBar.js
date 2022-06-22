@@ -14,7 +14,7 @@ const Navigation = () => {
         <li className="header__li"><a className="header__a" href="#">Productos</a></li>
         <li className="header__li"><a className="header__a" href="#">Nosotros</a></li>
         <li className="header__li"><a className="header__a" href="#">Contactanos</a></li>
-        <li className="header__li"><a className="header__a" href="#"><CartWidget/></a> <ItemCount/></li>
+        <li className="header__li"><a className="header__a" href="#"><CartWidget/></a><ItemCount stock={10} initial={1}/></li>
       </ul>
     </nav>
   );

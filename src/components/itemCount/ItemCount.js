@@ -3,11 +3,11 @@ import "./ItemCount.css";
 
 
 
-const ItemCount = () => {
+const ItemCount = ({stock,initial,onAdd}) => {
 
-    const [Count,setCount] = useState(1);
+    const [Count, setCount] = useState(initial);
     const increment = () =>{        
-        if (Count < 10) {
+        if (Count < stock) {
             setCount(Count + 1) 
         }else{
             alert("limite de Items Alcanzado")
@@ -15,7 +15,7 @@ const ItemCount = () => {
         }        
     }
     const decrement = () =>{        
-        if (Count > 0) {
+        if (Count > initial) {
             setCount(Count - 1) 
         }else{
             alert("no puedes tener menos de 0 items")
@@ -26,8 +26,9 @@ const ItemCount = () => {
   return (    
     <div>
         <p>Items {Count}</p>
-        <button onClick={increment}> + </button>
-        <button onClick={decrement}> - </button>
+        <button disabled={Count == stock} onClick={increment}> + </button>
+        <button disabled={Count <= 0} onClick={decrement}> - </button>
+        <button onClick={()=>onAdd(Count)}> Agregar al Carrito</button>
         {/* <button onClick={() => setCount(Count + 1)}> + </button>
         <button onClick={() => setCount(Count - 1)}> - </button> */}
     </div>
