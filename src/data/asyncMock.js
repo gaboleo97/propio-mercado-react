@@ -69,9 +69,11 @@ export const getProducts = (categoria) =>{
             else{
                 reject("Sin datos")
             } 
-        }, 5000);
+        }, 2000);
     })
 }
+
+
 
 export const getProductById = (id) =>{
     return new Promise ((resolve,reject) => {
@@ -81,6 +83,27 @@ export const getProductById = (id) =>{
             else{
                 reject("Sin datos")
             } 
-        }, 5000);
+        }, 1000);
+    })
+}
+
+export const getProductByCategory = (categoria) =>{
+    return new Promise ((resolve,reject) => {
+        
+            if(listProducts.length>0){
+                resolve(listProducts.find(product => product.category == categoria))}
+            else{
+                reject("Sin datos")
+            } 
+    })
+}
+
+export const getProductos = () =>{
+    return new Promise ((resolve,reject) => {
+            if(listProducts.length>0){
+                resolve(listProducts)}
+            else{
+                reject("Sin datos")
+            } 
     })
 }

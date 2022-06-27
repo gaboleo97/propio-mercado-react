@@ -1,21 +1,53 @@
-
+// CSS
 import './App.css';
-import Navigation from "./components/navBar/NavBar";
+// DEPENDENCYS
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react"
+// COMPONENTS
+import { Navigation } from "./components/navBar/NavBar";
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer"
 import { ItemDetailContainer } from './components/ItemDetailContainer/ItemDetailContainer';
+// VIEWS
+import { Home } from './views/Home/Home';
+import { Products } from './views/Products/Products';
+import { About } from './views/About/About';
+import { Contact } from './views/Contact/Contact';
+
+import { getProductById, getProducts, getProductos, getProductByCategory} from "./data/asyncMock"
+
 
 function App(promps) {
+  // const [item, setItem] = useState([])
+  // const [category, setCategory] = useState('')
+
+  //   useEffect(() => {
+  //     getProductByCategory()
+  //           .then(res => setCategory(res))
+  //           .catch(err => console.log(err))
+  //   }, [])
+  
+    
+  //   console.log("categoria:", category)
+    // console.log("item:", item)
   return (
-    <div className="App">
+    <Router>
+       <div className="App">
       <header className="App-header">
         <Navigation/> 
-             
-        <h1> Propio Mercado Ecommerce </h1>
-        <h3> comming soon</h3>       
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/Products' element={<Products/>}/>
+          <Route path='/Products' element={<Products/>}/>
+          <Route path='/About' element={<About/>}/>
+          <Route path='/Contact' element={<Contact/>}/>
+          <Route path='/description/:id' element={<ItemDetailContainer />}/>
+        </Routes>    
       </header>
-      <ItemListContainer /> 
-      <ItemDetailContainer />
+      {/* <ItemListContainer />  */}
+      {/* <ItemDetailContainer /> */}
     </div>
+    </Router>
+   
   );
 }
 

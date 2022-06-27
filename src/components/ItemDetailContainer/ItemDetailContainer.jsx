@@ -1,13 +1,27 @@
 import { useEffect, useState } from "react"
-import { getProductById } from "../../data/asyncMock"
+import { BsChevronDoubleLeft } from "react-icons/bs"
+import { getProductById, getProducts, getProductos } from "../../data/asyncMock"
 import { ItemDetail } from "../ItemDetail/ItemDetail"
+import { useParams } from "react-router-dom"
 
 export const ItemDetailContainer = () => {
-
+    
     const [item, setItem] = useState([])
     const [loading, setLoading] = useState(true)
-
-    const id = 2
+    let { id }  = useParams();
+    // let id = parseInt('idP');
+    // id = parseInt(id);
+    // const [items, setItems] = useState([])
+    // const id = 1
+    // const categoria = 'remeras'
+    // useEffect(() => {
+    //     getProducts(categoria)
+    //         .then(res => setItems(res))
+    //         .catch(err => console.log(err))
+    // }, [])
+    // console.log('itemss',items)
+    // let id = 6
+    console.log(id)
 
     useEffect(() => {
         getProductById(id)
@@ -23,12 +37,10 @@ export const ItemDetailContainer = () => {
 
     return (
         <>
-            <br />
-            <br /><br /><br />
             <h1>ITEM DETAIL: </h1>
-            <hr />
+            <hr/>
             {loading ? <div>Cargando...</div>
-                : <ItemDetail img={item.img} name={item.name} description={item.description} />
+                : <ItemDetail img={item.img} name={item.name} description={item.description} categoria={item.category} id={item.id}/>
             }
         </>
     )
