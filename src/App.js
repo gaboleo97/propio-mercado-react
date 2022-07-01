@@ -14,6 +14,7 @@ import { About } from './views/About/About';
 import { Contact } from './views/Contact/Contact';
 
 import { getProductById, getProducts, getProductos, getProductByCategory} from "./data/asyncMock"
+import { Cart } from './components/Cart/Cart';
 
 
 function App(promps) {
@@ -41,10 +42,10 @@ function App(promps) {
           <Route path='/About' element={<About/>}/>
           <Route path='/Contact' element={<Contact/>}/>
           <Route path='/description/:id' element={<ItemDetailContainer />}/>
+          <Route path='/Cart' element={<Cart />}/>
         </Routes>    
       </header>
-      {/* <ItemListContainer />  */}
-      {/* <ItemDetailContainer /> */}
+   
     </div>
     </Router>
    

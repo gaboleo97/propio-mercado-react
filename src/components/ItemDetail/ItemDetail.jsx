@@ -7,16 +7,21 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import { Link } from "react-router-dom";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 
 
 export const ItemDetail = ({ img, name, description, id }) => {
     
     return (
-        <div className="fondo">
+        <div className="fondo contenedor">
+            <div className="contenido">
             <Card sx={{ maxWidth: '100%' }}>
                 <CardActionArea>
                     <CardMedia
+                        className="imagen"
                         component="img"
                         image={img}
                         alt={name}
@@ -29,12 +34,24 @@ export const ItemDetail = ({ img, name, description, id }) => {
                             <h3>{description}</h3>
                         </Typography>
                         <br />
-                        <ItemCount stock={5} initial={1} name={name} id={id} description={description}/>
+                       
+                       
+                        
                         <hr />
                     </CardContent>
                 </CardActionArea>
             </Card>
+            </div>
+            
+            <div className="contador">
+                        <ItemCount stock={5} initial={1} name={name} id={id} description={description}/>
+                        <br />
+                        <Button variant="contained" ><Link to="/Cart" className="btn-comprar" >Comprar</Link></Button>
+            </div>
         </div>
     )
 }
+
+
+
 

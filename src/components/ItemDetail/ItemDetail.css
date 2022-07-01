@@ -1,0 +1,20 @@
+.btn-comprar{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    margin: 10px;
+
+}
+
+.contenedor{
+    display: flex;
+
+}
+
+.imagen{
+    width: 300px;
+}
+
+.contenedor--card{
+    display: flex;
+}
