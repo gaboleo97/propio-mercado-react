@@ -3,9 +3,11 @@ import "./ItemCount.css";
 
 
 
-const ItemCount = ({stock,initial,onAdd}) => {
+export const ItemCount = ({stock,initial, name, description, id}) => {
 
     const [Count, setCount] = useState(initial);
+    const [Detail, setDetail] = useState([]) 
+
     const increment = () =>{        
         if (Count < stock) {
             setCount(Count + 1) 
@@ -22,17 +24,23 @@ const ItemCount = ({stock,initial,onAdd}) => {
             console.log('limite negativo alcanzado')
         }        
     }
-   
+   const onAdd = () =>{
+        if (Count >= initial) {            
+            setDetail([{id},{name},{Count},{description}])
+             console.log(Detail) 
+        }else{
+            console.log(`error`)
+        }
+   }
+    
+
   return (    
     <div>
         <p>Items {Count}</p>
-        <button disabled={Count == stock} onClick={increment}> + </button>
+        <button disabled={Count === stock} onClick={increment}> + </button>
         <button disabled={Count <= 0} onClick={decrement}> - </button>
-        <button onClick={()=>onAdd(Count)}> Agregar al Carrito</button>
-        {/* <button onClick={() => setCount(Count + 1)}> + </button>
-        <button onClick={() => setCount(Count - 1)}> - </button> */}
+        <button onClick={onAdd}> Agregar al Carrito</button>
     </div>
   );
 };
 
-export default ItemCount;
