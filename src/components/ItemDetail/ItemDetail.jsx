@@ -2,6 +2,7 @@
 import { ItemCount } from "../itemCount/ItemCount"
 import "./ItemDetail.css"
 import * as React from 'react';
+import {useState, useEffect} from "react";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,11 +11,31 @@ import { CardActionArea } from '@mui/material';
 import { Link } from "react-router-dom";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import { click } from "@testing-library/user-event/dist/click";
+import { convertLength } from "@mui/material/styles/cssUtils";
 
 
 
 export const ItemDetail = ({ img, name, description, id }) => {
-    
+    const initial = 1;
+    const [Count, setCount] = useState(initial);
+    const [Click,setClick] = useState(false)
+    console.log(Click)
+   // const [Detail, setDetail] = useState([]) 
+   const onAdd = (Count) =>{
+    if (Count >= initial) {   
+
+        setClick(true);
+         console.log(`count: ${Count} click: ${Click}`) 
+    }else{
+        console.log(`error`)
+    }
+}
+   useEffect(() => {
+   
+  }, [])
+   
+
     return (
         <div className="fondo contenedor">
             <div className="contenido">
@@ -44,9 +65,11 @@ export const ItemDetail = ({ img, name, description, id }) => {
             </div>
             
             <div className="contador">
-                        <ItemCount stock={5} initial={1} name={name} id={id} description={description}/>
-                        <br />
-                        <Button variant="contained" ><Link to="/Cart" className="btn-comprar" >Comprar</Link></Button>
+            {Click ? (<Button variant="contained" ><Link to="/Cart" className="btn-comprar" >Comprar</Link></Button>)
+							: (<ItemCount stock={5} initial={initial} onAdd={onAdd}/>) }
+                        
+                        
+                        
             </div>
         </div>
     )
