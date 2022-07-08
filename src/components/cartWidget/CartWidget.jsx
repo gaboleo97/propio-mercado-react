@@ -1,8 +1,16 @@
 import "./CartWidget.css";
+
 import { BsFillCartFill } from 'react-icons/bs';
-const CartWidget = () => {
-  return (    
-        <BsFillCartFill/>    
+import { useContext } from "react";
+import { CartContext } from "../CartContext/CartContext";
+ const CartWidget = () => {
+  const [cart, setCart, clear ,cantidad, addCart] = useContext(CartContext)
+
+  return (
+    <div className="cartWidget">
+      <BsFillCartFill />
+      <p>{cantidad()}</p>
+    </div>
   );
 };
 

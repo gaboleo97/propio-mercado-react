@@ -13,24 +13,22 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { click } from "@testing-library/user-event/dist/click";
 import { convertLength } from "@mui/material/styles/cssUtils";
+import { useContext } from "react";
+import { CartContext } from "../CartContext/CartContext";
 
 
-
-export const ItemDetail = ({ img, name, description, id }) => {
-    const initial = 1;
-    const [Count, setCount] = useState(initial);
-    const [Click,setClick] = useState(false)
-    console.log(Click)
+export const ItemDetail = ({ producto }) => {
+    const [cart, setCart, clear ,cantidad,addCart] = useContext(CartContext)
+    // const initial = 1;
+    // const [Count, setCount] = useState(initial);
+    // const [Click,setClick] = useState(false)
+    // const [Item, setItem] = useState([{}]);
+    const [Detail, setDetail] = useState([]);
    // const [Detail, setDetail] = useState([]) 
    const onAdd = (Count) =>{
-    if (Count >= initial) {   
-
-        setClick(true);
-         console.log(`count: ${Count} click: ${Click}`) 
-    }else{
-        console.log(`error`)
+        addCart(producto,Count);
+    
     }
-}
    useEffect(() => {
    
   }, [])
@@ -44,15 +42,15 @@ export const ItemDetail = ({ img, name, description, id }) => {
                     <CardMedia
                         className="imagen"
                         component="img"
-                        image={img}
-                        alt={name}
+                        image={producto.img}
+                        alt={producto.name}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            <h1>{name}</h1>
+                            <h1>{producto.name}</h1>
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            <h3>{description}</h3>
+                            <h3>{producto.description}</h3>
                         </Typography>
                         <br />
                        
@@ -65,8 +63,10 @@ export const ItemDetail = ({ img, name, description, id }) => {
             </div>
             
             <div className="contador">
-            {Click ? (<Button variant="contained" ><Link to="/Cart" className="btn-comprar" >Comprar</Link></Button>)
-							: (<ItemCount stock={5} initial={initial} onAdd={onAdd}/>) }
+            {/* { ? (<Button variant="contained" ><Link to="/Cart" className="btn-comprar" >Comprar</Link></Button>)
+							: (<ItemCount stock={5} initial={initial} onAdd={onAdd}/>) } */}
+                            <Button variant="contained" ><Link to="/Cart" className="btn-comprar" >Comprar</Link></Button>
+                            <ItemCount stock={producto.stock} initial={1} onAdd={onAdd}/>
                         
                         
                         

@@ -31,7 +31,7 @@ export const ItemDetailContainer = () => {
             }
             )
             .catch(err => console.log(err))
-    }, [])
+    }, [id])
 
     console.log("item:", item)
 
@@ -40,7 +40,7 @@ export const ItemDetailContainer = () => {
             <h1>ITEM DETAIL: </h1>
             <hr/>
             {loading ? <div>Cargando...</div>
-                : <ItemDetail img={item.img} name={item.name} description={item.description} categoria={item.category} id={item.id}/>
+                : <ItemDetail producto={item}/>
             }
         </>
     )

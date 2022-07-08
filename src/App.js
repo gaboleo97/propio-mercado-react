@@ -15,6 +15,7 @@ import { Contact } from './views/Contact/Contact';
 
 import { getProductById, getProducts, getProductos, getProductByCategory} from "./data/asyncMock"
 import { Cart } from './components/Cart/Cart';
+import { CartContextProvider } from './components/CartContext/CartContext';
 
 
 function App(promps) {
@@ -31,10 +32,13 @@ function App(promps) {
   //   console.log("categoria:", category)
     // console.log("item:", item)
   return (
+    
     <Router>
+      <CartContextProvider>
        <div className="App">
       <header className="App-header">
         <Navigation/> 
+        
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/Products' element={<Products/>}/>
@@ -43,12 +47,15 @@ function App(promps) {
           <Route path='/Contact' element={<Contact/>}/>
           <Route path='/description/:id' element={<ItemDetailContainer />}/>
           <Route path='/Cart' element={<Cart />}/>
-        </Routes>    
+        </Routes>  
+       
       </header>
-   
+      
+		
     </div>
+    </CartContextProvider>
     </Router>
-   
+     
   );
 }
 
